@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+        <!-- This loops over the menus, and for each one gives a link to that menu view.
+          the url is showing us the view with the menu id ex: menu/view/5-->
+        <ul>
+            <li th:each="menu : ${menus}">
+                <a th:href="@{'/menu/view/' + ${menu.id}}" th:text="${menu.name}"></a>
+            </li>
+        </ul>
+        <p><a th:href="@{/menu/add/}">Add menu</a></p>
+
+    </body>
+</html>
